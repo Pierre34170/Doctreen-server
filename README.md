@@ -1,7 +1,7 @@
 # Doctreen-server
 Test technique
 
-Technologies utilisées : React / Typescript
+Technologies utilisées : NodeJs / Typescript, PostgreSQL, Sequelize.
 
 Etapes de lancement : 
 
