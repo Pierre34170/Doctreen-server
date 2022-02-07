@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+
+  db:
+    image: postgres:alpine
+    container_name: db
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+    volumes:
+      - ./script-database.sql:/docker-entrypoint-initdb.d/script-database.sql
+    ports:
+      - "5432:5432"
+
+  server:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: server
+    ports:
+      - "80:80"
+    environment: 
+      DEV_DATABASE_URL: postgres://postgres:postgres@db:5432/db
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    restart: "unless-stopped"
+    depends_on:
+      - db
