@@ -1,5 +1,7 @@
-# Doctreen-client
+# Doctreen-server
 Test technique
+
+Technologies utilisées : React / Typescript
 
 Etapes de lancement : 
 
